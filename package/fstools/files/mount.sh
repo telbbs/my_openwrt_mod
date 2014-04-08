@@ -3,7 +3,7 @@
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
-pi_include /lib/functions/block.sh
+. /lib/functions/block.sh
 
 config_mount_by_section() {
 	local cfg="$1"
