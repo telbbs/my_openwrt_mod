@@ -17,7 +17,7 @@ umount_disk(){
 
 wifi_switch(){
   [ `uci get wireless.radio0.disabled` -eq 1 ] && uci del wireless.radio0.disabled && uci commit wireless
-  state=`uci get wireless.@wifi-iface[0].disabled`
+  state="`uci get wireless.@wifi-iface[0].disabled`"
   case $state in
     1)
       uci del wireless.@wifi-iface[0].disabled && uci commit wireless && env -i /sbin/wifi up >/dev/null 2>/dev/null;;
@@ -40,11 +40,11 @@ aria2_switch(){
   fi
 }
 
-[ "$SEEN" -lt 1 ] && aria2_switch
-[ "$SEEN" -gt 1 -a "$SEEN" -lt 4 ] && wifi_switch
+[ "$SEEN" -lt 1 ] && wifi_switch
+[ "$SEEN" -gt 1 -a "$SEEN" -lt 4 ] && aria2_switch
 [ "$SEEN" -ge 4 ] && {
   if [ -n "`mount | grep /dev/sd`" ];then
-    umount_disk > /dev/null
+    umount_disk &> /dev/null
     echo 1 > ${qssgreen}/brightness
     echo heartbeat > ${qssgreen}/trigger
   fi
