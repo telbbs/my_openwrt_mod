@@ -33,8 +33,10 @@ config_mount_by_section() {
 					case "$fstype" in
 						'ntfs')
 							env -i /sbin/mount.ntfs-3g -o "$options" "$found_device" "$target" 2>&1 | tee /proc/self/fd/2 | logger -t 'fstab';;
-						*fat*)
-							env -i /sbin/mount -t exfat -o "$options" "$found_device" "$target" 2>&1 | tee /proc/self/fd/2 | logger -t 'fstab';;
+						'exfat')
+							env -i /sbin/mount.exfat -o "$options" "$found_device" "$target" 2>&1 | tee /proc/self/fd/2 | logger -t 'fstab';;
+						fat*)
+							env -i /sbin/mount -t vfat -o "$options" "$found_device" "$target" 2>&1 | tee /proc/self/fd/2 | logger -t 'fstab';;
 						*)
 							env -i /bin/mount -t "$fstype" -o "$options" "$found_device" "$target" 2>&1 | tee /proc/self/fd/2 | logger -t 'fstab';;
 					esac
