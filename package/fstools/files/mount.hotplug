@@ -14,7 +14,7 @@ set_devices(){
 
 set_fstab(){
 
-	my_fstype="`blkid | grep "/dev/$device" | awk -F 'TYPE="' '{print $2}' | sed 's/\" //'`"
+	my_fstype="`blkid -o value -s TYPE`"
 	
 	[ -n "$my_fstype" ] && {
 		
