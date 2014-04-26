@@ -75,7 +75,7 @@ if [ `basename $blkdev` != "block" ]; then
 
     case "$ACTION" in
 	add)
-		get_uuid=`blkid | grep "/dev/${device}" | awk -F "UUID=" '{print $2}'| awk -F "\"" '{print $2}'`
+		get_uuid="`blkid -o value -s UUID /dev/$device`"
 		[ -n "$get_uuid" ] && {
 			have_uuid=$(uci show fstab | grep -c "$get_uuid")
 			[ "$have_uuid" = "0" ] && set_fstab
