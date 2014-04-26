@@ -14,7 +14,7 @@ set_devices(){
 
 set_fstab(){
 
-	my_fstype="`blkid -o value -s TYPE`"
+	my_fstype="`blkid -o value -s TYPE /dev/$device`"
 	
 	[ -n "$my_fstype" ] && {
 		
