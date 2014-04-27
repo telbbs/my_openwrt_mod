@@ -31,11 +31,10 @@ aria2_switch(){
   pgrep aria2c >/dev/null 2>&1 || exit 1
 
   aria2AT="`env -i /usr/sbin/aria2ctl -status | grep 'ActiveTask' | awk -F ':' '{print $2}'`"
-  aria2WT="`env -i /usr/sbin/aria2ctl -status | grep 'WaitingTask' | awk -F ':' '{print $2}'`"
 
-  if [ $aria2AT -gt 0 -a $aria2WT -gt 0 ];then
+  if [ $aria2AT -gt 0 ];then
     env -i /usr/sbin/aria2ctl -pause &> /dev/null
-  elif [ $aria2AT -eq 0 -a $aria2WT -gt 0 ];then
+  else
     env -i /usr/sbin/aria2ctl -resume &> /dev/null
   fi
 }
