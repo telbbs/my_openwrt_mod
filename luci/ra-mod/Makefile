@@ -111,7 +111,7 @@ $(eval $(call application,chinadns,LuCI Support for ChinaDNS-C,\
 	+PACKAGE_luci-app-chinadns:ChinaDNS-C))
 
 $(eval $(call application,cpulimit,LuCI Support for cpulimit,\
-	+PACKAGE_luci-app-cpulimit:cpulimit \
+	+PACKAGE_luci-app-cpulimit:cpulimit))
 
 ### Compile ###
 PKG_CONFIG_DEPENDS=$(patsubst %,CONFIG_PACKAGE_%,$(LUCI_BUILD_PACKAGES))
