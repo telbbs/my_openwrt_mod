@@ -109,6 +109,8 @@ $(eval $(call application,vsftpd,LuCI Support for vsftpd,\
 $(eval $(call application,chinadns,LuCI Support for ChinaDNS-C,\
 	+PACKAGE_luci-app-chinadns:ChinaDNS-C))
 
+$(eval $(call application,cpulimit,CPULIMIT configuration module,cpulimit))
+
 ### Compile ###
 PKG_CONFIG_DEPENDS=$(patsubst %,CONFIG_PACKAGE_%,$(LUCI_BUILD_PACKAGES))
 
