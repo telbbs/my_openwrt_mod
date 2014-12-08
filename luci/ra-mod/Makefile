@@ -55,7 +55,6 @@ endef
 
 $(eval $(call protocol,openconnect-ra,Support for OpenConnect VPN,+openconnect))
 $(eval $(call protocol,shadowvpn,Support for ShadowVPN,+ShadowVPN))
-
 $(eval $(call protocol,cpulimit,Support for CPULIMIT,+cpulimit))
 
 ### Applications ###
